@@ -10,3 +10,4 @@ An item improvement plugin for PocketMine-MP.
 |Particle|🔴|
 |Custom format Lore|🔴|
 |Add special effects|🔴|
+|Scoreboard|🔴|
