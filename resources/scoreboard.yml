@@ -1,0 +1,12 @@
+active: on
+
+
+title: &l&eHeroes
+
+scoreboard:
+  - &bName: {player.name}
+  - &bClass: {player.class}
+  - ''
+  - &bPower: {player.power}
+
+time-update: 1 #1 second for update

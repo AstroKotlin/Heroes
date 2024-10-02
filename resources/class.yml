@@ -1,0 +1,9 @@
+class:
+  ninja:
+    name: 'Ninja'
+
+    speed: 1,2
+    health: 18
+    armor: 0
+    mana: 200
+    strength_bonus: 0

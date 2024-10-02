@@ -1,0 +1,9 @@
+name: Heroes
+version: 1.0.0
+api: 5.0.0
+author: AstroKotlin
+main: AstroKotlin\Heroes\Heroes
+description: An item improvement plugin for PocketMine-MP.
+permissions:
+  heroes.command:
+    default: op
