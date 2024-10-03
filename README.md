@@ -1,5 +1,5 @@
 # Heroes
-An item improvement plugin for PocketMine-MP.
+An RPG plugin plugin for PocketMine-MP.
 
 |Features|Status|
 |---|---|
