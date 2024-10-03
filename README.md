@@ -8,6 +8,6 @@ An RPG plugin plugin for PocketMine-MP.
 |Customize Item|🔴|
 |Item Rank|🔴|
 |Particle|🔴|
-|Custom format Lore|🔴|
+|Custom format Lore|✔️|
 |Add special effects|🔴|
-|Scoreboard|🔴|
+|Scoreboard|✔️|
