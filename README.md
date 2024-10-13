@@ -7,7 +7,7 @@ An RPG plugin plugin for PocketMine-MP.
 |Add skills|🔴|
 |Customize Item|✔️|
 |Item Rank|✔️|
-|Particle|🔴|
+|Particle|✔️ |
 |Custom format Lore|✔️|
-|Add special effects|🔴|
+|Add special effects|✔️ |
 |Scoreboard|✔️|
