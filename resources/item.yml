@@ -1,6 +1,6 @@
-item-lore-format: {properties}{l}{l}&f{text}
+item-lore-format: "{properties}{l}{l}§f{text}"
 
 properties:
-  critical-damage: &1+{level} &eCritical Damage
-  critical-rate: &1+{level} &uCritical Rate
-  quick-slash: &1+{level} &fQuick Slash
+  critical-damage: "§1+{level} §eCritical Damage"
+  critical-rate: "§1+{level} §uCritical Rate"
+  quick-slash: "§1+{level} §fQuick Slash"

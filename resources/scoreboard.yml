@@ -1,12 +1,13 @@
-active: on
+active: true
 
+update-second: 1 #1s update
 
-title: &l&eHeroes
+title: "§l&eHeroes"
 
 scoreboard:
-  - &bName: {player.name}
-  - &bClass: {player.class}
+  - "§bName: {player.name}"
+  - "§bClass: {player.class}"
   - ''
-  - &bPower: {player.power}
+  - "§bPower: {player.power}"
 
 time-update: 1 #1 second for update

@@ -10,18 +10,25 @@ use pocketmine\player\Player;
 use pocketmine\plugin\PLuginBase;
 use pocketmine\utils\SingletonTrait;
 use pocketmine\utils\Config;
+use vennv\vapm\SampleMacro;
 use vennv\vapm\System;
 use vennv\vapm\VapmPMMP;
 
 class Heroes extends PLuginBase {
 
     use SingletonTrait;
+
     public Config $itemCfg;
+
     public Config $playerData;
+
     public Config $classData;
+
     public Config $scoreData;
 
     public ScoreProvider $scoreProvider;
+
+    public ?SampleMacro $sb;
 
     protected function onLoad(): void {
         self::setInstance($this);
@@ -41,7 +48,8 @@ class Heroes extends PLuginBase {
 
         $this->getServer()->getCommandMap()->register("heroes", new HeroesCommand($this));
 
-        System::setInterval(function() {
+        if($this->scoreData->get("active") === true)
+        $this->sb = System::setInterval(function() {
             foreach($this->getServer()->getOnlinePlayers() as $player) {
                 $this->scoreProvider->create($player, 'Heroes', $this->scoreData->get('title'));
                 foreach($this->scoreData->get('scoreboard') as $line => $text) {
@@ -66,8 +74,9 @@ class Heroes extends PLuginBase {
         return $this->getPlayerData()->exists($player->getName());
     }
 
-    public function addPlayerData(Player $player, string $class): void {
-        $this->getPlayerData()->set($player->getName(), ['class' => $class, 'stats' => ['health'=> 0, 'mana' => 0, 'armor' => 0, 'strength' => 0], 'effects' => []]);
+    public function addPlayerData(Player $player, string $className): void {
+        $class = $this->getClass($className);
+        $this->getPlayerData()->set($player->getName(), ['class' => $className, 'stats' => ['health'=> $class["health"], 'mana' => $class["mana"], 'armor' => $class["armor"], 'strength_bonus' => $class["strength_bonus"]], 'effects' => []]);
         $this->getPlayerData()->save();
     }
 
@@ -75,7 +84,31 @@ class Heroes extends PLuginBase {
         return (string)$this->itemCfg->get("item-lorem-format");
     }
 
+    public function getClass(string $class): array {
+        return $this->classData->get($class);
+    }
+
     public function getProp(string $prop): string {
         return $this->itemCfg->get('properties')[$prop];
+    }
+
+    public function getClassName(Player $player): string {
+        return $this->classData->get($player->getName())["class"];
+    }
+
+    public function getMana(Player $player): int {
+        return $this->playerData->get($player->getName())["stats"]["mana"];
+    }
+
+    public function getArmor(Player $player): int {
+        return $this->playerData->get($player->getName())["stats"]["armor"];
+    }
+
+    public function getStrengthBonus(Player $player): int {
+        return $this->playerData->get($player->getName())["stats"]["strength_bonus"];
+    }
+
+    public function getEffects(Player $player): array {
+        return $this->playerData->get($player->getName())["stats"]["effects"];
     }
 }

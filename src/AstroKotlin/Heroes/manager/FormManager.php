@@ -10,6 +10,13 @@ use pocketmine\player\Player;
 
 class FormManager {
 
+    public static function getClassBts(): array {
+        $bt = [];
+        foreach(Heroes::getInstance()->classData->getAll() as $class => $v) $bt[] = "Class " . $class;
+
+        return $bt;
+    }
+
     public static function chooseClass(Player $player): void {
         $player->sendForm((new SimpleForm("Choose class", "Choose class for starter", function (Player $player, $data) {
             if($data === null) {
@@ -17,7 +24,7 @@ class FormManager {
                 return;
             }
 
-            Heroes::getInstance()->addPlayerData($player, );
-        })));
+            Heroes::getInstance()->addPlayerData($player, Heroes::getInstance()->classData->getAll()[$data]);
+        }))->addButton(self::getClassBts()));
     }
 }

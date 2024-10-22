@@ -1,5 +1,4 @@
-class:
-  ninja:
+ninja:
     name: 'Ninja'
 
     speed: 1,2
